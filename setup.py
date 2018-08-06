@@ -4,6 +4,7 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
+import tblu_module_so
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -11,15 +12,15 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [ ]
+requirements = ['psutil>=5.4.6', 'py-cpuinfo>=4.0.0']
 
-setup_requirements = [ ]
+setup_requirements = []
 
-test_requirements = [ ]
+test_requirements = []
 
 setup(
-    author="TBlu-Company",
-    author_email='dev@tblu.com.br',
+    author=tblu_module_so.__author__,
+    author_email=tblu_module_so.__email__,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -45,6 +46,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/TBlu-Company/tblu_module_so',
-    version='0.1.0',
+    version=tblu_module_so.__version__,
     zip_safe=False,
 )
