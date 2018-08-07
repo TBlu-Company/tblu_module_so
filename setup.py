@@ -4,7 +4,24 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
-import tblu_module_so
+import codecs
+import os
+import re
+import sys
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+def read(*parts):
+    with codecs.open(os.path.join(here, *parts), 'r') as fp:
+        return fp.read()
+
+def find_version(*file_paths):
+    version_file = read(*file_paths)
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                              version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError("Unable to find version string.")
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -19,8 +36,8 @@ setup_requirements = []
 test_requirements = []
 
 setup(
-    author=tblu_module_so.__author__,
-    author_email=tblu_module_so.__email__,
+    author='TBlu-Company',
+    author_email='dev@tblu.com.br',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -46,6 +63,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/TBlu-Company/tblu_module_so',
-    version=tblu_module_so.__version__,
+    version=find_version("tblu_module_so", "__init__.py"),
     zip_safe=False,
 )

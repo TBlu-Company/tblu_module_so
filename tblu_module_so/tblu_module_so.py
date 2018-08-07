@@ -4,37 +4,8 @@
 try:
     import psutil
 except ImportError:
-    installer = ['install', '--user', 'psutil']
-    try:
-        import pip
-        pip.main(installer)  # pip old
-    except AttributeError:
-        try:
-            from pip._internal import main  # pip new
-            main(installer)
-        except AttributeError as e1:
-            pass
-
-try:
-    import psutil
-except ImportError:
     import sys
     sys.exit(1)
-
-
-try:
-    import cpuinfo
-except ImportError:
-    installer = ['install', '--user', 'py-cpuinfo']
-    try:
-        import pip
-        pip.main(installer)  # pip old
-    except AttributeError:
-        try:
-            from pip._internal import main  # pip new
-            main(installer)
-        except AttributeError as e1:
-            pass
 
 try:
     import cpuinfo
